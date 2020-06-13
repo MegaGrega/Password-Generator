@@ -20,23 +20,33 @@ function writePassword() {
       alert("This is a valid length")
       // prompt types
       var characterType = ["lowercase letters", "uppercase letters", "numbers", "special characters"];
-      //store type response
+      //create var for response holder
       var upCase;
       var lowCase;
       var includeNum;
       var specChar;
       var responseHolder = [lowCase, upCase, includeNum, specChar]
-      
-      // loop to ask about all types
-      for(i = 0; i<characterType.length; i++){
-        responseHolder[i] = confirm("Would you like to include " + characterType[i]+ " in your password?")
-        if (responseHolder[i] === true){
-          console.log("true")
-        }else{
-          console.log("false")
+      //asks user types they want to include
+      function askType(){
+        for(i = 0; i<characterType.length; i++){
+          responseHolder[i] = confirm("Would you like to include " + characterType[i]+ " in your password?")
+        // // true false checker for variables
+          console.log(responseHolder[0] === true)
+          console.log(responseHolder[1] === true)
+          console.log(responseHolder[2] === true)
+          console.log(responseHolder[3] === true)
         }
       }
+      askType();
+      // if user does not choose an option it prompts them to select at least one option
+      if(responseHolder[0] === false && responseHolder[1] === false && responseHolder[2] === false && responseHolder[3] === false){
+        alert("Please select at least one option")
+        askType();
+      }
+      // if user selected at least one option - generate password based on user input
+      else{
 
+      }
     }
   }
   passwordText.value = password;
